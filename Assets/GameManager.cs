@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum DifficultyLevel { Easy, Medium, Hard, None }
 
-public enum GameState { Normal, Transitioning, Thought, Vision, Seduction, Ready, GameOver }
+public enum GameState { Normal, Transitioning, Thought, Vision, Seduction, Ready, GameOver, Confessing }
 
 public class GameManager : MonoBehaviour {
 

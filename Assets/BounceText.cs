@@ -8,7 +8,21 @@ public class BounceText : MonoBehaviour
 	public float minTimeBeforeDirectionChange = 1f;
 	public float maxTimeBeforeDirectionChange = 1.5f;
 
+	public float finalAmplitude1;
+	public float finalTime1;
+	public float finalAmplitude2;
+	public float finalTime2;
+
 	private Coroutine bounceCoroutine;
+
+	protected virtual void Awake()
+	{
+		finalAmplitude1 = Random.Range(this.minAmplitude, this.maxAmplitude);
+		finalTime1 = Random.Range(this.minTimeBeforeDirectionChange, this.maxTimeBeforeDirectionChange);
+
+		finalAmplitude2 = Random.Range(this.minAmplitude, this.maxAmplitude);
+		finalTime2 = Random.Range(this.minTimeBeforeDirectionChange, this.maxTimeBeforeDirectionChange);
+	}
 
 	// Use this for initialization
 	void OnEnable()
@@ -23,11 +37,6 @@ public class BounceText : MonoBehaviour
 
 	IEnumerator BounceTextCoroutine()
 	{
-		float amplitude1 = Random.Range(this.minAmplitude, this.maxAmplitude);
-		float timeBeforeDirectionChange1 = Random.Range(this.minTimeBeforeDirectionChange, this.maxTimeBeforeDirectionChange);
-
-		float amplitude2 = Random.Range(this.minAmplitude, this.maxAmplitude);
-		float timeBeforeDirectionChange2 = Random.Range(this.minTimeBeforeDirectionChange, this.maxTimeBeforeDirectionChange);
 
 		float timeElapsed = 0;
 
@@ -37,8 +46,8 @@ public class BounceText : MonoBehaviour
 		{
 			timeElapsed += Time.deltaTime;
 
-			transform.position = startPos + Vector3.up * amplitude1 * Mathf.Sin(2 * Mathf.PI * timeElapsed / timeBeforeDirectionChange1) + 
-				Vector3.right * amplitude2 * Mathf.Sin(2 * Mathf.PI * timeElapsed / timeBeforeDirectionChange2);
+			transform.position = startPos + Vector3.up * finalAmplitude1 * Mathf.Sin(2 * Mathf.PI * timeElapsed / finalTime1) + 
+				Vector3.right * finalAmplitude2 * Mathf.Sin(2 * Mathf.PI * timeElapsed / finalTime2);
 
 			yield return 0;
 		}

@@ -17,7 +17,7 @@ public class RandomObjectGenerator : MonoBehaviour {
 
 	private int maxNumberRetries = 20;
 
-	private List<GameObject> instantiatedObjects;
+	public List<GameObject> instantiatedObjects;
 	private List<Vector3> alreadyInstantiatedPositions;
 
 	public GameObject parentObject;
