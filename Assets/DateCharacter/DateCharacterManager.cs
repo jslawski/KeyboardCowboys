@@ -7,7 +7,6 @@ public enum DateCharacterType {Easy, Medium, Hard, FastTalker, SlowTalker, Visio
 
 public class DateCharacterManager : MonoBehaviour
 {
-
     public static DateCharacterManager instance;
 
     public Texture[] allBenignEvidenceImages;
@@ -25,5 +24,6 @@ public class DateCharacterManager : MonoBehaviour
 		DateCharacter characterComponent = newCharacter.GetComponent<DateCharacter>();
 
 		characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.None);
+		SpeechBubbleGenerator.instance.StartTalking();
     }
 }

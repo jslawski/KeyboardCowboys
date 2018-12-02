@@ -9,8 +9,9 @@ public class TextLiteralLists : MonoBehaviour {
 	public List<string> Names;
     public List<string> BenignText;
     public List<string> BenignThoughts;
+	public List<string> EvidenceBenignThoughts;
     public List<string> BenignConfessions;
-    public List<string> BadThoughts;
+    public List<string> EvidenceBadThoughts;
     public List<string> BadConfessions;
     public List<string> FlirtWords;
     

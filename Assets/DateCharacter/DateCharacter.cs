@@ -14,7 +14,9 @@ public class DateCharacter : MonoBehaviour {
     public string evidenceConfession;
 
     public int numBenignTexts;
-    public List<string> benignTexts;
+	public List<string> benignTexts;
+
+	public List<string> allThoughts;
 
     //Thought reading traits
     public float timeBetweenSpeechBubbles;
@@ -64,19 +66,41 @@ public class DateCharacter : MonoBehaviour {
 			newFlirtWord = TextLiteralLists.instance.FlirtWords[Random.Range(0, TextLiteralLists.instance.FlirtWords.Count)];
 		}
         this.correctFlirtWord = this.flirtWords[Random.Range(0, this.flirtWords.Count)];
-        
+
+		string newBenignThought = TextLiteralLists.instance.BenignThoughts[Random.Range(0, TextLiteralLists.instance.BenignThoughts.Count)];
+		//numBenignTexts - 1 because we're slotting in 1 evidence thought
+		while (this.allThoughts.Count < this.numBenignTexts - 1)
+		{
+			if (!this.allThoughts.Contains(newBenignThought))
+			{
+				this.allThoughts.Add(newBenignThought);
+			}
+
+			newBenignThought = TextLiteralLists.instance.BenignThoughts[Random.Range(0, TextLiteralLists.instance.BenignThoughts.Count)];
+		}
+
         if (this.isSerialKiller == true)
         {
             this.evidenceImage = DateCharacterManager.instance.allBadEvidenceImages[Random.Range(0, DateCharacterManager.instance.allBadEvidenceImages.Length)];
-            this.evidenceThought = TextLiteralLists.instance.BadThoughts[Random.Range(0, TextLiteralLists.instance.BadThoughts.Count)];
-            this.evidenceConfession = TextLiteralLists.instance.BadConfessions[Random.Range(0, TextLiteralLists.instance.BadThoughts.Count)];
+            this.evidenceThought = TextLiteralLists.instance.EvidenceBadThoughts[Random.Range(0, TextLiteralLists.instance.EvidenceBadThoughts.Count)];
+            this.evidenceConfession = TextLiteralLists.instance.BadConfessions[Random.Range(0, TextLiteralLists.instance.BadConfessions.Count)];
         }
         else
         {
             this.evidenceImage = DateCharacterManager.instance.allBenignEvidenceImages[Random.Range(0, DateCharacterManager.instance.allBenignEvidenceImages.Length)];
-            this.evidenceThought = TextLiteralLists.instance.BenignThoughts[Random.Range(0, TextLiteralLists.instance.BenignThoughts.Count)];
+            this.evidenceThought = TextLiteralLists.instance.EvidenceBenignThoughts[Random.Range(0, TextLiteralLists.instance.EvidenceBenignThoughts.Count)];
             this.evidenceConfession = TextLiteralLists.instance.BenignConfessions[Random.Range(0, TextLiteralLists.instance.BenignConfessions.Count)];
         }
+
+		this.allThoughts.Add(this.evidenceThought);
+		//Randomize all thoughts to shuffle in the evidence thought
+		for (int i = 0; i < this.allThoughts.Count; i++)
+		{
+			string temp = this.allThoughts[i];
+			int randomIndex = Random.Range(i, this.allThoughts.Count);
+			this.allThoughts[i] = this.allThoughts[randomIndex];
+			this.allThoughts[randomIndex] = temp;
+		}
 
 		GameManager.instance.currentCharacter = this;
 	}
