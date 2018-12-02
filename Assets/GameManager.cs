@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 
+	public Camera mainCamera;
+
 	public delegate void GameStateUpdated(GameState state);
 	public static event GameStateUpdated onGameStateUpdate;
 
-	[SerializeField]
-	private GameObject toolButtonsParent;
-
+	[HideInInspector]
 	public DateCharacter currentCharacter;
 
 	[SerializeField]

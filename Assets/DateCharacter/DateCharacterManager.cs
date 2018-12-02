@@ -45,7 +45,7 @@ public class DateCharacterManager : MonoBehaviour
 
 	public void DismissCurrentCharacter(bool verdict)
 	{
-		if (GameManager.instance.currentCharacter.isSerialKiller == true)
+		if (GameManager.instance.currentCharacter.isSerialKiller == true && verdict == true)
 		{
 			GameManager.instance.UpdateGameState(GameState.GameOver);
 			return;
