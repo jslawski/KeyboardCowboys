@@ -31,6 +31,42 @@ public class DateCharacter : MonoBehaviour {
     public List<string> flirtWords;
     public string correctFlirtWord;
 
+	public void Awake()
+	{
+		StartCoroutine(this.MoveUpToTable());
+	}
+
+	private IEnumerator MoveUpToTable()
+	{
+		while ((this.transform.position.x - Vector3.zero.x) > 0.01f)
+		{
+			this.transform.position = Vector3.Lerp(this.transform.position, Vector3.zero, 3f * Time.deltaTime);
+			yield return null;
+		}
+
+		this.transform.position = Vector3.zero;
+		SpeechBubbleGenerator.instance.StartTalking();
+		GameManager.instance.UpdateGameState(GameState.Normal);
+	}
+
+	public void DismissCharacter(bool saidYes)
+	{
+		StartCoroutine(this.DismissCharacterCoroutine(saidYes));
+	}
+
+	private IEnumerator DismissCharacterCoroutine(bool saidYes)
+	{
+		SpeechBubbleGenerator.instance.StopTalking();
+
+		while (Mathf.Abs(-15f - this.transform.position.x) > 0.01f)
+		{
+			this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(-15f, 0f, 0f), 3f * Time.deltaTime);
+			yield return null;
+		}
+
+		GameManager.instance.UpdateGameState(GameState.Ready);
+	}
+
     public void SetupNewCharacter(DifficultyLevel difficultyLevel, DateCharacterType characterType)
     {
 		this.benignTexts = new List<string>();

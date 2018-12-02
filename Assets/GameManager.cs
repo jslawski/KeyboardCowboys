@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum DifficultyLevel { Easy, Medium, Hard, None }
 
-public enum GameState { Normal, Thought, Vision, Seduction }
+public enum GameState { Normal, Transitioning, Thought, Vision, Seduction, Ready, GameOver }
 
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 
+	public delegate void GameStateUpdated(GameState state);
+	public static event GameStateUpdated onGameStateUpdate;
+
+	[SerializeField]
+	private GameObject toolButtonsParent;
+
 	public DateCharacter currentCharacter;
+
+	[SerializeField]
+	private GameObject gameOverScreen;
 
 	public GameState state = GameState.Normal;
 
@@ -22,6 +32,16 @@ public class GameManager : MonoBehaviour {
 	public void UpdateGameState(GameState state)
 	{
 		this.state = state;
+
+		if (GameManager.onGameStateUpdate != null)
+		{
+			GameManager.onGameStateUpdate(this.state);
+		}
+
+		if (this.state == GameState.GameOver)
+		{
+			this.gameOverScreen.SetActive(true);
+		}
 	}
 
 }

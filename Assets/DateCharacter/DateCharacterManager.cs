@@ -19,11 +19,39 @@ public class DateCharacterManager : MonoBehaviour
         DateCharacterManager.instance = this;
         this.allBenignEvidenceImages = Resources.LoadAll<Texture>("EvidenceImage/Benign");
         this.allBadEvidenceImages = Resources.LoadAll<Texture>("EvidenceImage/Bad");
+		GameManager.onGameStateUpdate += this.StateUpdated;
 
-		GameObject newCharacter = Instantiate(this.genericCharacterObject, Vector3.zero, new Quaternion()) as GameObject;
+		this.MakeNewCharacter();
+    }
+
+	private void MakeNewCharacter()
+	{
+		GameObject newCharacter = Instantiate(this.genericCharacterObject, new Vector3(15f, 0f, 0f), new Quaternion()) as GameObject;
 		DateCharacter characterComponent = newCharacter.GetComponent<DateCharacter>();
 
 		characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.None);
-		SpeechBubbleGenerator.instance.StartTalking();
-    }
+		GameManager.instance.UpdateGameState(GameState.Transitioning);
+	}
+
+
+	public void StateUpdated(GameState state)
+	{
+		if (state == GameState.Ready)
+		{
+			Destroy(GameManager.instance.currentCharacter.gameObject);
+			this.MakeNewCharacter();
+		}
+	}
+
+	public void DismissCurrentCharacter(bool verdict)
+	{
+		if (GameManager.instance.currentCharacter.isSerialKiller == true)
+		{
+			GameManager.instance.UpdateGameState(GameState.GameOver);
+			return;
+		}
+
+		GameManager.instance.currentCharacter.DismissCharacter(verdict);
+		GameManager.instance.UpdateGameState(GameState.Transitioning);
+	}
 }
