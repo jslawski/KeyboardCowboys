@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -58,7 +58,7 @@ LightmapSettings:
     serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 10
-    m_AtlasSize: 512
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -256,3 +256,120 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &867929978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 867929980}
+  - component: {fileID: 867929979}
+  - component: {fileID: 867929981}
+  - component: {fileID: 867929982}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &867929979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 867929978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d186857204300e7439259c685ad84fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Names:
+  - Name 1
+  - Name 2
+  - Name 3
+  - Name 4
+  - Name 5
+  BenignText:
+  - BText 1
+  - BText 2
+  - BText 3
+  - BText 4
+  - BText 5
+  BenignThoughts:
+  - BThought 1
+  - BThought 2
+  - BThought 3
+  - BThought 4
+  - BThought 5
+  BenignConfessions:
+  - BConfession 1
+  - BConfession 2
+  - BConfession 3
+  - BConfession 4
+  - BConfession 5
+  BadThoughts:
+  - BadThought 1
+  - BadThought 2
+  - BadThought 3
+  - BadThought 4
+  - BadThought 5
+  BadConfessions:
+  - BadConfession 1
+  - BadConfession 2
+  - BadConfession 3
+  - BadConfession 4
+  - BadConfession 5
+  FlirtWords:
+  - Cute
+  - Handsome
+  - Strong
+  - Thicc
+  - Juicy
+--- !u!4 &867929980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 867929978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867929981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 867929978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4e439c13eb844b98866f48706fb5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allBenignEvidenceImages:
+  - {fileID: 2800000, guid: 7e26b57a783874c4b9f6127207e8cfae, type: 3}
+  - {fileID: 2800000, guid: 956d5c1d7e2dc0f498df7bd5534f08c4, type: 3}
+  - {fileID: 2800000, guid: 314acab79cc6a75498aa3db33ebc77be, type: 3}
+  allBadEvidenceImages:
+  - {fileID: 2800000, guid: 091d98b4b4457044db639b16878b6521, type: 3}
+  - {fileID: 2800000, guid: e9e966c8add4fe542a137a7c0b09a9d1, type: 3}
+  - {fileID: 2800000, guid: 0281f1c61e7dfc741840a72f72e5387d, type: 3}
+  genericCharacterObject: {fileID: 1061321357555840, guid: 10370c8964b35b944a906a60bcd5606c,
+    type: 2}
+--- !u!114 &867929982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 867929978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc60b0bc16f11fb4fb2259d5c3d51bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCharacter: {fileID: 0}
