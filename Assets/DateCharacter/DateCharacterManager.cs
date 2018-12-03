@@ -26,10 +26,10 @@ public class DateCharacterManager : MonoBehaviour
 
 	private void MakeNewCharacter()
 	{
-		GameObject newCharacter = Instantiate(this.genericCharacterObject, new Vector3(15f, 0f, 0f), new Quaternion()) as GameObject;
+		GameObject newCharacter = Instantiate(this.genericCharacterObject, new Vector3(40f, 0f, 0f), new Quaternion()) as GameObject;
 		DateCharacter characterComponent = newCharacter.GetComponent<DateCharacter>();
 
-		characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.None);
+		characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.VisionGuarded);
 		GameManager.instance.UpdateGameState(GameState.Transitioning);
 	}
 

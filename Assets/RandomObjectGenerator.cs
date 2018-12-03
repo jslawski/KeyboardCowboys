@@ -44,7 +44,6 @@ public class RandomObjectGenerator : MonoBehaviour {
 					if (Mathf.Abs(this.alreadyInstantiatedPositions[j].x - xValue) <= this.minXDistanceFromOtherObject &&
 						Mathf.Abs(this.alreadyInstantiatedPositions[j].y - yValue) <= this.minYDistanceFromOtherObject)
 					{
-						Debug.LogError("COLLISION");
 						collision = true;
 						break;
 					}

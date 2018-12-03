@@ -1,0 +1,79 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScoreManager : MonoBehaviour {
+
+	public static ScoreManager instance;
+
+	public int minutesPerGame = 3;
+	public int secondsPerGame = 0;
+	public int minutesPerDate = 0;
+	public int secondsPerDate = 30;
+
+	public int score = 0;
+	public int runningTotalPeopleSeen = 0;
+
+	public int pointsPerCorrectGuess = 50;
+	public int pointsPerIncorrectGuess = 25;
+
+	public int minutesLeftInGame = 3;
+	public int secondsLeftInCurrentMinuteGame = 60;
+	public int minutesLeftInDate = 0;
+	public int secondsLeftInCurrentMinuteDate = 30;
+
+	// Use this for initialization
+	void Start ()
+	{
+		ScoreManager.instance = this;
+		StartCoroutine(this.BeginGameCountdown());
+	}
+
+	public void SaidYesToSafePerson()
+	{
+		this.score += this.pointsPerCorrectGuess;
+	}
+
+	public void SaidNoToSafePerson()
+	{
+		this.score -= this.pointsPerIncorrectGuess;
+	}
+
+	public IEnumerator BeginGameCountdown()
+	{
+		while (this.minutesLeftInGame > 0 || this.secondsLeftInCurrentMinuteGame > 0)
+		{
+			yield return new WaitForSeconds(1);
+
+			if (this.secondsLeftInCurrentMinuteGame <= 0)
+			{
+				this.minutesLeftInGame--;
+				this.secondsLeftInCurrentMinuteGame = 60;
+			}
+
+			this.secondsLeftInCurrentMinuteGame--;
+		}
+
+		GameManager.instance.UpdateGameState(GameState.GameOver);
+	}
+
+	public IEnumerator BeginDateCountdown()
+	{
+		while (this.minutesLeftInDate > 0 || this.secondsLeftInCurrentMinuteDate > 0)
+		{
+			yield return new WaitForSeconds(1);
+
+			if (this.secondsLeftInCurrentMinuteDate <= 0)
+			{
+				this.minutesLeftInDate--;
+				this.secondsLeftInCurrentMinuteDate = 60;
+			}
+
+			this.secondsLeftInCurrentMinuteDate--;
+		}
+
+		DateCharacterManager.instance.DismissCurrentCharacter(false);
+		this.minutesLeftInDate = this.minutesPerDate;
+		this.secondsLeftInCurrentMinuteDate = this.secondsPerDate;
+	}
+}
