@@ -12,6 +12,20 @@ public class VerdictButton : MonoBehaviour {
 	void Awake() {
 		this.thisButton = GetComponent<Button>();
 		this.thisButton.onClick.AddListener(this.SendVerdict);
+		GameManager.onGameStateUpdate += this.StateUpdated;
+	}
+
+	private void StateUpdated(GameState state)
+	{
+		switch (state)
+		{
+			case GameState.Transitioning:
+				this.gameObject.SetActive(false);
+				break;
+			default:
+				this.gameObject.SetActive(true);
+				break;
+		}
 	}
 
 	private void SendVerdict()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DateCharacter : MonoBehaviour {
 
@@ -31,6 +32,24 @@ public class DateCharacter : MonoBehaviour {
     public List<string> flirtWords;
     public string correctFlirtWord;
 
+	[Header("Character Creator Assets")]
+	[SerializeField]
+	private SpriteRenderer baseBodySprite;
+	[SerializeField]
+	private SpriteRenderer handsSprite;
+	[SerializeField]
+	private SpriteRenderer shirtSprite;
+	[SerializeField]
+	private SpriteRenderer headpieceSprite;
+	[SerializeField]
+	private SpriteRenderer eyebrowsSprite;
+	[SerializeField]
+	private SpriteRenderer eyesSprite;
+	[SerializeField]
+	private SpriteRenderer noseSprite;
+	[SerializeField]
+	private SpriteRenderer mouthSprite;
+
 	public void Awake()
 	{
 		StartCoroutine(this.MoveUpToTable());
@@ -38,19 +57,35 @@ public class DateCharacter : MonoBehaviour {
 
 	private IEnumerator MoveUpToTable()
 	{
-		while ((this.transform.position.x - Vector3.zero.x) > 0.01f)
+		Debug.LogError("ORIGINAL POSITION: " + this.transform.position);
+
+		while (Mathf.Abs(this.transform.position.x - DateCharacterManager.instance.finalPosition.x) > 0.001f)
 		{
-			this.transform.position = Vector3.Lerp(this.transform.position, Vector3.zero, 3f * Time.deltaTime);
+			this.transform.position = Vector3.Lerp(this.transform.position, DateCharacterManager.instance.finalPosition, 3f * Time.deltaTime);
 			yield return null;
 		}
 
-		this.transform.position = Vector3.zero;
+		this.transform.position = DateCharacterManager.instance.finalPosition;
 		SpeechBubbleGenerator.instance.StartTalking();
 		GameManager.instance.UpdateGameState(GameState.Normal);
+		StartCoroutine(ScoreManager.instance.BeginDateCountdown());
 	}
 
 	public void DismissCharacter(bool saidYes)
 	{
+		ScoreManager.instance.runningTotalPeopleSeen++;
+
+		if (saidYes)
+		{
+			ScoreManager.instance.SaidYesToSafePerson();
+		}
+		else if(isSerialKiller == false)
+		{
+			ScoreManager.instance.SaidNoToSafePerson();
+		}
+
+		ScoreManager.instance.personCounter.text = ScoreManager.instance.runningTotalPeopleSeen.ToString();
+
 		StartCoroutine(this.DismissCharacterCoroutine(saidYes));
 	}
 
@@ -58,17 +93,20 @@ public class DateCharacter : MonoBehaviour {
 	{
 		SpeechBubbleGenerator.instance.StopTalking();
 
-		while (Mathf.Abs(-15f - this.transform.position.x) > 0.01f)
+		while (Mathf.Abs(3f - this.transform.position.x) > 1f)
 		{
-			this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(-15f, 0f, 0f), 3f * Time.deltaTime);
+			this.transform.position = Vector3.Lerp(this.transform.position, DateCharacterManager.instance.finalPosition + new Vector3(3f, 0f, 0f), 1f * Time.deltaTime);
 			yield return null;
 		}
 
 		GameManager.instance.UpdateGameState(GameState.Ready);
+		StopAllCoroutines();
 	}
 
     public void SetupNewCharacter(DifficultyLevel difficultyLevel, DateCharacterType characterType)
     {
+		this.SetupVisualCharacteristics();
+
 		this.benignTexts = new List<string>();
 		this.flirtWords = new List<string>();
 
@@ -140,7 +178,19 @@ public class DateCharacter : MonoBehaviour {
 
 		GameManager.instance.currentCharacter = this;
 	}
-	
+
+	private void SetupVisualCharacteristics()
+	{
+		this.baseBodySprite.sprite = CharacterCreator.instance.GetBaseBody();
+		this.handsSprite.sprite = CharacterCreator.instance.GetHands(this.baseBodySprite.sprite.name);
+		this.shirtSprite.sprite = CharacterCreator.instance.GetShirt();
+		this.headpieceSprite.sprite = CharacterCreator.instance.GetHeadpiece();
+		this.eyebrowsSprite.sprite = CharacterCreator.instance.GetEyebrows();
+		this.eyesSprite.sprite = CharacterCreator.instance.GetEyes();
+		this.noseSprite.sprite = CharacterCreator.instance.GetNose();
+		this.mouthSprite.sprite = CharacterCreator.instance.GetMouth();
+	}
+
 	private void SetupCharacterTraits(DifficultyLevel difficultyLevel, DateCharacterType characterType)
 	{
 		switch (difficultyLevel)
