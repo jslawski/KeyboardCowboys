@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: e2a47f9423c3cdf4b835f6d232138e7f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: pCube1
+    100002: pCube18
+    100004: pCube2
+    100006: pCube34
+    100008: pCube56
+    100010: pCube59
+    100012: pCube60
+    100014: pCube61
+    100016: pCylinder17
+    100018: pCylinder46
+    100020: pCylinder52
+    100022: pCylinder66
+    100024: pCylinder67
+    100026: polySurface1
+    100028: polySurface100
+    100030: polySurface106
+    100032: polySurface108
+    100034: polySurface112
+    100036: polySurface113
+    100038: polySurface114
+    100040: polySurface115
+    100042: polySurface116
+    100044: polySurface118
+    100046: polySurface121
+    100048: polySurface124
+    100050: polySurface79
+    100052: polySurface88
+    100054: polySurface97
+    100056: polySurface98
+    100058: pPlane20
+    100060: pPlane22
+    100062: //RootNode
+    400000: pCube1
+    400002: pCube18
+    400004: pCube2
+    400006: pCube34
+    400008: pCube56
+    400010: pCube59
+    400012: pCube60
+    400014: pCube61
+    400016: pCylinder17
+    400018: pCylinder46
+    400020: pCylinder52
+    400022: pCylinder66
+    400024: pCylinder67
+    400026: polySurface1
+    400028: polySurface100
+    400030: polySurface106
+    400032: polySurface108
+    400034: polySurface112
+    400036: polySurface113
+    400038: polySurface114
+    400040: polySurface115
+    400042: polySurface116
+    400044: polySurface118
+    400046: polySurface121
+    400048: polySurface124
+    400050: polySurface79
+    400052: polySurface88
+    400054: polySurface97
+    400056: polySurface98
+    400058: pPlane20
+    400060: pPlane22
+    400062: //RootNode
+    2100000: RoomMAT
+    2100002: floorMAT
+    2100004: PillarBlackMAT
+    2100006: GlossWhiteMat
+    2100008: pillarsmat
+    2100010: woodbert
+    2100012: glass_1
+    2100014: glass_2
+    2100016: glass_3
+    2100018: unicycle_Mat
+    2100020: BigLure
+    2100022: guitar
+    2100024: placardMAT
+    2100026: lambert1
+    2100028: MetalMAt
+    2100030: brassMAt
+    2100032: mattblackMat
+    2100034: signsMat
+    2100036: additionalframes_MAT
+    2100038: barsignMAT
+    2100040: tableandchair_MAT
+    2100042: clock_mat
+    2300000: pCube1
+    2300002: pCube18
+    2300004: pCube2
+    2300006: pCube34
+    2300008: pCube56
+    2300010: pCube59
+    2300012: pCube60
+    2300014: pCube61
+    2300016: pCylinder17
+    2300018: pCylinder46
+    2300020: pCylinder52
+    2300022: pCylinder66
+    2300024: pCylinder67
+    2300026: polySurface1
+    2300028: polySurface100
+    2300030: polySurface106
+    2300032: polySurface108
+    2300034: polySurface112
+    2300036: polySurface113
+    2300038: polySurface114
+    2300040: polySurface115
+    2300042: polySurface116
+    2300044: polySurface118
+    2300046: polySurface121
+    2300048: polySurface124
+    2300050: polySurface79
+    2300052: polySurface88
+    2300054: polySurface97
+    2300056: polySurface98
+    2300058: pPlane22
+    3300000: pCube1
+    3300002: pCube18
+    3300004: pCube2
+    3300006: pCube34
+    3300008: pCube56
+    3300010: pCube59
+    3300012: pCube60
+    3300014: pCube61
+    3300016: pCylinder17
+    3300018: pCylinder46
+    3300020: pCylinder52
+    3300022: pCylinder66
+    3300024: pCylinder67
+    3300026: polySurface1
+    3300028: polySurface100
+    3300030: polySurface106
+    3300032: polySurface108
+    3300034: polySurface112
+    3300036: polySurface113
+    3300038: polySurface114
+    3300040: polySurface115
+    3300042: polySurface116
+    3300044: polySurface118
+    3300046: polySurface121
+    3300048: polySurface124
+    3300050: polySurface79
+    3300052: polySurface88
+    3300054: polySurface97
+    3300056: polySurface98
+    3300058: pPlane22
+    4300000: pCube1
+    4300002: pCube2
+    4300004: polySurface1
+    4300006: pCube18
+    4300008: pCylinder17
+    4300010: pCube34
+    4300012: pCylinder46
+    4300014: pCylinder52
+    4300016: polySurface79
+    4300018: pCylinder66
+    4300020: pCube56
+    4300022: pCylinder67
+    4300024: pCube59
+    4300026: polySurface97
+    4300028: polySurface98
+    4300030: polySurface106
+    4300032: polySurface88
+    4300034: polySurface100
+    4300036: polySurface108
+    4300038: polySurface112
+    4300040: polySurface114
+    4300042: polySurface118
+    4300044: pCube60
+    4300046: polySurface113
+    4300048: polySurface115
+    4300050: polySurface116
+    4300052: polySurface121
+    4300054: pPlane22
+    4300056: polySurface124
+    4300058: pCube61
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BigLure
+    second: {fileID: 2100000, guid: bd6066e563f368b4a8682811937af4cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GlossWhiteMat
+    second: {fileID: 2100000, guid: 9abd8953225acfb45bf8735d3d77a77a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalMAt
+    second: {fileID: 2100000, guid: 7dbfadde5c1448f469f1b2b3282e2796, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PillarBlackMAT
+    second: {fileID: 2100000, guid: 655bbc41e109e0446be89a8fe112604a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RoomMAT
+    second: {fileID: 2100000, guid: 7bd6eb676eb817e44b7cbccb2d0148ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: additionalframes_MAT
+    second: {fileID: 2100000, guid: 4e4976ddaaef81c4698a9622601d1c79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barsignMAT
+    second: {fileID: 2100000, guid: 88ed38ef97556554db8232588e7117cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brassMAt
+    second: {fileID: 2100000, guid: 32044c016bee61b468df2b8b588596bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock_mat
+    second: {fileID: 2100000, guid: 9a074a7f59d2e4c449d5ede92582c8bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floorMAT
+    second: {fileID: 2100000, guid: 9546d067c541aeb4a8f75fd60f452c42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_1
+    second: {fileID: 2100000, guid: 8c8a2a45da2c303478a77a94b3fdedb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_2
+    second: {fileID: 2100000, guid: 0b1d26ce78db2f340a8e17951e27b8a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_3
+    second: {fileID: 2100000, guid: 0c294d0e24ae3674d90c86706ea222b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guitar
+    second: {fileID: 2100000, guid: d02af33feb1a7214ca2cdbf4836b2f16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mattblackMat
+    second: {fileID: 2100000, guid: ebec0a448c3f0a24896f271331d6737e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pillarsmat
+    second: {fileID: 2100000, guid: 816645aa40c2de446849f8c9a551ce0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: placardMAT
+    second: {fileID: 2100000, guid: f094b51d44ceb3e4e97bd7c767a92152, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: signsMat
+    second: {fileID: 2100000, guid: 85298d6ec4672c946b7bf21c7e959362, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tableandchair_MAT
+    second: {fileID: 2100000, guid: ffffd246ff01afd4b91a023e0d318a4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unicycle_Mat
+    second: {fileID: 2100000, guid: 98c2525291f6a554c9ab33137d0a6850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: woodbert
+    second: {fileID: 2100000, guid: 96c5fddbeb55d664791fb7589ab2f8ba, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
