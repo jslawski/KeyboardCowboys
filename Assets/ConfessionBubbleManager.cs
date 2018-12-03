@@ -13,6 +13,11 @@ public class ConfessionBubbleManager : MonoBehaviour {
 		GameManager.onGameStateUpdate += this.StateUpdated;
 	}
 
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
+	}
+
 	private void StateUpdated(GameState state)
 	{
 		if (state == GameState.Confessing)

@@ -107,7 +107,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49275e5803bc31c4c8a762c7465e508e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f78056c01f51c294bbebd475b59fc9b4, type: 2}
   m_sharedMaterial: {fileID: 21746140826528880, guid: 49275e5803bc31c4c8a762c7465e508e,
     type: 2}
   m_fontSharedMaterials: []
@@ -221,7 +221,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Flirty text '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49275e5803bc31c4c8a762c7465e508e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f78056c01f51c294bbebd475b59fc9b4, type: 2}
   m_sharedMaterial: {fileID: 21746140826528880, guid: 49275e5803bc31c4c8a762c7465e508e,
     type: 2}
   m_fontSharedMaterials: []

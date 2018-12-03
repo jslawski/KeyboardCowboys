@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum DateCharacterType {Easy, Medium, Hard, FastTalker, SlowTalker, VisionGuarded, Unflirtatious, None };
+public enum DateCharacterType {Easy, Medium, Hard, FastTalker, SlowTalker, VisionGuarded, Unflirtatious, VisionSparse, None };
 
 public class DateCharacterManager : MonoBehaviour
 {
@@ -26,6 +26,11 @@ public class DateCharacterManager : MonoBehaviour
 		this.MakeNewCharacter();
     }
 
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
+	}
+
 	private void MakeNewCharacter()
 	{
 		GameObject newCharacter = Instantiate(this.genericCharacterObject, this.finalPosition + new Vector3(-15f, 0f, 0f), new Quaternion()) as GameObject;
@@ -39,7 +44,21 @@ public class DateCharacterManager : MonoBehaviour
 		}
 		else
 		{
-			characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.None);
+			if (ScoreManager.instance.runningTotalPeopleSeen < 2)
+			{
+				characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.None);
+			}
+			else if (ScoreManager.instance.runningTotalPeopleSeen < 5)
+			{
+				characterComponent.SetupNewCharacter(DifficultyLevel.Medium, DateCharacterType.None);
+			}
+			else
+			{
+				DifficultyLevel level = (DifficultyLevel)Random.Range(0, (int)DifficultyLevel.None);
+				DateCharacterType dateType = (DateCharacterType)Random.Range(0, (int)DateCharacterType.None);
+
+				characterComponent.SetupNewCharacter(level, dateType);
+			}
 		}
 
 		GameManager.instance.UpdateGameState(GameState.Transitioning);
@@ -60,6 +79,7 @@ public class DateCharacterManager : MonoBehaviour
 		if (GameManager.instance.currentCharacter.isSerialKiller == true && verdict == true)
 		{
 			GameManager.instance.UpdateGameState(GameState.GameOver);
+			Application.LoadLevel("GameOverScene");
 			return;
 		}
 

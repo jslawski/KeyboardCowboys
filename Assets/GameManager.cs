@@ -37,11 +37,6 @@ public class GameManager : MonoBehaviour {
 		{
 			GameManager.onGameStateUpdate(this.state);
 		}
-
-		if (this.state == GameState.GameOver)
-		{
-			this.gameOverScreen.SetActive(true);
-		}
 	}
 
 }

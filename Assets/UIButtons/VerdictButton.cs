@@ -15,6 +15,11 @@ public class VerdictButton : MonoBehaviour {
 		GameManager.onGameStateUpdate += this.StateUpdated;
 	}
 
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
+	}
+
 	private void StateUpdated(GameState state)
 	{
 		switch (state)

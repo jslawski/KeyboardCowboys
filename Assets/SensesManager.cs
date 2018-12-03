@@ -10,15 +10,15 @@ public class SensesManager : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float hearingValue = 1.0f;
 	public int hearingDegredationLevel = 0;
-	private float hearingDegredationRatePerSecond = 0.05f;
+	private float hearingDegredationRatePerSecond = 0.02f;
 	private float hearingDowngrade1Threshold = 0.70f;
 	private float hearingDowngrade2Threshold = 0.30f;
-	private float hearingDowngrade1FadeAmount = 0.20f;
-	private float hearingDowngrade2FadeAmount = 0.35f;
-	private float hearingDowngrade3FadeAmount = 0.5f;
+	private float hearingDowngrade1FadeAmount = -0.12f;
+	private float hearingDowngrade2FadeAmount = -0.20f;
+	private float hearingDowngrade3FadeAmount = -0.25f;
 	private float hearingDowngrade1JumbleAmount = -5f;
 	private float hearingDowngrade2JumbleAmount = -10f;
-	private float hearingDowngrade3JumbleAmount = -15f;
+	private float hearingDowngrade3JumbleAmount = -20f;
 
 	public delegate void HearingDowngraded(float fadeAmount, float jumbleAmount);
 	public static event HearingDowngraded onHearingDowngraded;
@@ -27,12 +27,12 @@ public class SensesManager : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float visionValue = 1.0f;
 	public int visionDegredationLevel = 0;
-	private float visionDegredationRatePerSecond = 0.05f;
+	private float visionDegredationRatePerSecond = 0.02f;
 	private float visionDowngrade1Threshold = 0.70f;
 	private float visionDowngrade2Threshold = 0.30f;
 	private float visionDowngrade1RotateSpeed = 0.2f;
-	private float visionDowngrade2RotateSpeed = 0.5f;
-	private float visionDowngrade3RotateSpeed = 0.75f;
+	private float visionDowngrade2RotateSpeed = 0.75f;
+	private float visionDowngrade3RotateSpeed = 1.5f;
 
 	public delegate void VisionDowngraded(float rotateSpeed);
 	public static event VisionDowngraded onVisionDowngraded;
@@ -41,7 +41,7 @@ public class SensesManager : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float speakingValue = 1.0f;
 	public int speakingDegredationLevel = 0;
-	private float speakingDegredationRatePerSecond = 0.05f;
+	private float speakingDegredationRatePerSecond = 0.02f;
 	private float speakingDowngrade1Threshold = 0.70f;
 	private float speakingDowngrade2Threshold = 0.30f;
 	private float speakingDowngrade1FadeAmount = 0.3f;
@@ -59,6 +59,11 @@ public class SensesManager : MonoBehaviour {
 		SensesManager.instance = this;
 
 		GameManager.onGameStateUpdate += this.StateUpdated;
+	}
+
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
 	}
 
 	private void StateUpdated(GameState state)

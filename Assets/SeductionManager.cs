@@ -43,6 +43,11 @@ public class SeductionManager : MonoBehaviour {
 		SensesManager.onSpeakingDowngraded += this.SpeakingDowngraded;
 	}
 
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
+	}
+
 	private void SpeakingDowngraded(float fadeAmount, float jumbleAmount)
 	{
 		this.newFadeAmount = fadeAmount;

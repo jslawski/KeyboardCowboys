@@ -154,14 +154,14 @@ public class DateCharacter : MonoBehaviour {
         if (this.isSerialKiller == true)
         {
             this.evidenceImage = DateCharacterManager.instance.allBadEvidenceImages[Random.Range(0, DateCharacterManager.instance.allBadEvidenceImages.Length)];
-            this.evidenceThought = TextLiteralLists.instance.EvidenceBadThoughts[Random.Range(0, TextLiteralLists.instance.EvidenceBadThoughts.Count)];
-            this.evidenceConfession = TextLiteralLists.instance.BadConfessions[Random.Range(0, TextLiteralLists.instance.BadConfessions.Count)];
+            this.evidenceThought = TextLiteralLists.instance.BadSecrets[Random.Range(0, TextLiteralLists.instance.BadSecrets.Count)];
+            this.evidenceConfession = TextLiteralLists.instance.BadSecrets[Random.Range(0, TextLiteralLists.instance.BadSecrets.Count)];
         }
         else
         {
             this.evidenceImage = DateCharacterManager.instance.allBenignEvidenceImages[Random.Range(0, DateCharacterManager.instance.allBenignEvidenceImages.Length)];
-            this.evidenceThought = TextLiteralLists.instance.EvidenceBenignThoughts[Random.Range(0, TextLiteralLists.instance.EvidenceBenignThoughts.Count)];
-            this.evidenceConfession = TextLiteralLists.instance.BenignConfessions[Random.Range(0, TextLiteralLists.instance.BenignConfessions.Count)];
+            this.evidenceThought = TextLiteralLists.instance.BenignSecrets[Random.Range(0, TextLiteralLists.instance.BenignSecrets.Count)];
+            this.evidenceConfession = TextLiteralLists.instance.BenignSecrets[Random.Range(0, TextLiteralLists.instance.BenignSecrets.Count)];
         }
 
 		this.allThoughts.Add(this.evidenceThought);
@@ -198,15 +198,15 @@ public class DateCharacter : MonoBehaviour {
 				this.speechBubbleUptime = Random.Range(3f, 5f);
 				this.timeBetweenSpeechBubbles = this.speechBubbleUptime + Random.Range(0.5f, 1.0f);
 				this.numFlirtWords = Random.Range(3, 5);
-				this.totalNumButtons = Random.Range(5, 7);
-				this.totalNumGreenButtons = Random.Range(2, 4);
+				this.totalNumButtons = Random.Range(3, 5);
+				this.totalNumGreenButtons = Random.Range(2, 3);
 				break;
 			case DifficultyLevel.Medium:
 				this.numBenignTexts = Random.Range(5, 8);
 				this.speechBubbleUptime = Random.Range(3f, 5f);
 				this.timeBetweenSpeechBubbles = this.speechBubbleUptime + Random.Range(1f, 3f);
 				this.numFlirtWords = Random.Range(5, 8);
-				this.totalNumButtons = Random.Range(7, 12);
+				this.totalNumButtons = Random.Range(5, 8);
 				this.totalNumGreenButtons = Random.Range(3, 5);
 				break;
 			case DifficultyLevel.Hard:
@@ -214,8 +214,8 @@ public class DateCharacter : MonoBehaviour {
 				this.speechBubbleUptime = Random.Range(0.5f, 1f);
 				this.timeBetweenSpeechBubbles = this.speechBubbleUptime + Random.Range(0.1f, 0.5f);
 				this.numFlirtWords = Random.Range(10, 15);
-				this.totalNumButtons = Random.Range(13, 20);
-				this.totalNumGreenButtons = Random.Range(7, 10);
+				this.totalNumButtons = Random.Range(7, 12);
+				this.totalNumGreenButtons = Random.Range(4, 7);
 				break;
 			default:
 				Debug.LogError("DateCharacter.cs: Unknown DifficultyLevel");
@@ -238,8 +238,12 @@ public class DateCharacter : MonoBehaviour {
 				this.totalNumButtons = Random.Range(13, 20);
 				this.totalNumGreenButtons = Random.Range(7, 10);
 				break;
+			case DateCharacterType.VisionSparse:
+				this.totalNumButtons = Random.Range(10, 15);
+				this.totalNumGreenButtons = Random.Range(1, 2);
+				break;
 			case DateCharacterType.Unflirtatious:
-				this.numFlirtWords = Random.Range(10, 20);
+				this.numFlirtWords = Random.Range(15, 20);
 				break;
 			default:
 				break;
@@ -248,7 +252,7 @@ public class DateCharacter : MonoBehaviour {
 
 	public void SetupDevil()
 	{
-		this.baseBodySprite.sprite = Resources.Load<Sprite>("CharacterCreator/BaseBody/devilatyourtable");
+		this.baseBodySprite.sprite = Resources.Load<Sprite>("CharacterCreator/devilatyourtable");
 
 		this.benignTexts = new List<string>();
 		this.flirtWords = new List<string>();

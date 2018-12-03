@@ -29,9 +29,11 @@ public class ScoreManager : MonoBehaviour {
 	private TextMeshProUGUI clockTimer;
 	[SerializeField]
 	public TextMeshProUGUI personCounter;
+	[SerializeField]
+	public TextMeshProUGUI scoreText;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		ScoreManager.instance = this;
 		StartCoroutine(this.BeginGameCountdown());
@@ -41,11 +43,13 @@ public class ScoreManager : MonoBehaviour {
 	public void SaidYesToSafePerson()
 	{
 		this.score += this.pointsPerCorrectGuess;
+		scoreText.text = "Score: " + this.score.ToString();
 	}
 
 	public void SaidNoToSafePerson()
 	{
 		this.score -= this.pointsPerIncorrectGuess;
+		scoreText.text = "Score: " + this.score.ToString();
 	}
 
 	public IEnumerator BeginGameCountdown()
@@ -68,6 +72,7 @@ public class ScoreManager : MonoBehaviour {
 		}
 
 		GameManager.instance.UpdateGameState(GameState.GameOver);
+		Application.LoadLevel("YouSurvivedScene");
 	}
 
 	public IEnumerator BeginDateCountdown()

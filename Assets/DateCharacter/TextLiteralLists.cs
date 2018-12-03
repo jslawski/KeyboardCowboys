@@ -9,10 +9,8 @@ public class TextLiteralLists : MonoBehaviour {
 	public List<string> Names;
     public List<string> BenignText;
     public List<string> BenignThoughts;
-	public List<string> EvidenceBenignThoughts;
-    public List<string> BenignConfessions;
-    public List<string> EvidenceBadThoughts;
-    public List<string> BadConfessions;
+	public List<string> BenignSecrets;
+    public List<string> BadSecrets;
     public List<string> FlirtWords;
 
 	public List<string> DevilBenignText;
@@ -31,6 +29,10 @@ public class TextLiteralLists : MonoBehaviour {
 	public const string SPEAKING_DEGRADED_3_TIP = "Better start learnin' sign language, girl, cuz you're as mute as a silent movie.";
 
 	public const string DEVIL_CONFESSION = "I may not look it, but I'm actually the devil, reaper of souls and sower of chaos. I'm a nice guy, though";
+
+	public const string VISION_TUTORIAL = "Click to reveal all hidden secrets";
+	public const string HEARING_TUTORIAL = "Wait to hear hidden thoughts";
+	public const string SEDUCTION_TUTORIAL = "Type to magically flirt out a confession";
 
 	public void Awake() 
 	{

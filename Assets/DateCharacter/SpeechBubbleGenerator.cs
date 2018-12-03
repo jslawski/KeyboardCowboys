@@ -19,6 +19,13 @@ public class SpeechBubbleGenerator : MonoBehaviour {
 	[SerializeField]
 	TMP_FontAsset horrorFont;
 
+	[SerializeField]
+	private Image bubbleImage;
+	[SerializeField]
+	private Sprite speechBubbleSprite;
+	[SerializeField]
+	private Sprite thoughtBubbleSprite;
+
 	private float currentFadeAmount = 0f;
 	private float currentJumbleAmount = 0f;
 
@@ -38,6 +45,11 @@ public class SpeechBubbleGenerator : MonoBehaviour {
 	{
 		GameManager.onGameStateUpdate += this.StateUpdated;
 		SensesManager.onHearingDowngraded += this.HearingDowngraded;
+	}
+
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
 	}
 
 	public void StartTalking()
@@ -92,11 +104,13 @@ public class SpeechBubbleGenerator : MonoBehaviour {
 			if (GameManager.instance.state == GameState.Thought)
 			{
 				this.speechBubbleText.text = GameManager.instance.currentCharacter.allThoughts[this.speechBubbleTextIndex % GameManager.instance.currentCharacter.numBenignTexts];
+				this.bubbleImage.sprite = this.thoughtBubbleSprite;
 				this.fontText.font = this.horrorFont;
 			}
 			else
 			{
 				this.speechBubbleText.text = GameManager.instance.currentCharacter.benignTexts[this.speechBubbleTextIndex % GameManager.instance.currentCharacter.numBenignTexts];
+				this.bubbleImage.sprite = this.speechBubbleSprite;
 				this.fontText.font = this.normalFont;
 				this.fontText.characterSpacing = this.currentJumbleAmount;
 				this.speechBubbleText.materialForRendering.SetFloat("_FaceDilate", this.currentFadeAmount);
@@ -109,11 +123,13 @@ public class SpeechBubbleGenerator : MonoBehaviour {
 				if (GameManager.instance.state == GameState.Thought)
 				{
 					this.speechBubbleText.text = GameManager.instance.currentCharacter.allThoughts[this.speechBubbleTextIndex % GameManager.instance.currentCharacter.numBenignTexts];
+					this.bubbleImage.sprite = this.thoughtBubbleSprite;
 					this.fontText.font = this.horrorFont;
 				}
 				else
 				{
 					this.speechBubbleText.text = GameManager.instance.currentCharacter.benignTexts[this.speechBubbleTextIndex % GameManager.instance.currentCharacter.numBenignTexts];
+					this.bubbleImage.sprite = this.speechBubbleSprite;
 					this.fontText.font = this.normalFont;
 					this.fontText.characterSpacing = this.currentJumbleAmount;
 					this.speechBubbleText.materialForRendering.SetFloat("_FaceDilate", this.currentFadeAmount);

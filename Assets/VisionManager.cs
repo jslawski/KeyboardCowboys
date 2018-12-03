@@ -28,6 +28,11 @@ public class VisionManager : MonoBehaviour {
 		SensesManager.onVisionDowngraded += this.VisionDowngraded;
 	}
 
+	void OnDestroy()
+	{
+		GameManager.onGameStateUpdate -= this.StateUpdated;
+	}
+
 	private void VisionDowngraded(float rotationSpeed)
 	{
 		this.newRotationSpeed = rotationSpeed;
