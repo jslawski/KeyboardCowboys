@@ -57,8 +57,6 @@ public class DateCharacter : MonoBehaviour {
 
 	private IEnumerator MoveUpToTable()
 	{
-		Debug.LogError("ORIGINAL POSITION: " + this.transform.position);
-
 		while (Mathf.Abs(this.transform.position.x - DateCharacterManager.instance.finalPosition.x) > 0.001f)
 		{
 			this.transform.position = Vector3.Lerp(this.transform.position, DateCharacterManager.instance.finalPosition, 3f * Time.deltaTime);
@@ -250,7 +248,7 @@ public class DateCharacter : MonoBehaviour {
 
 	public void SetupDevil()
 	{
-		this.baseBodySprite.sprite = Resources.Load<Sprite>("CharacterCreator/BaseBody/devilatyourtable.png");
+		this.baseBodySprite.sprite = Resources.Load<Sprite>("CharacterCreator/BaseBody/devilatyourtable");
 
 		this.benignTexts = new List<string>();
 		this.flirtWords = new List<string>();

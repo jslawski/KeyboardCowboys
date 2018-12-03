@@ -33,7 +33,7 @@ public class DateCharacterManager : MonoBehaviour
 
 		//Roll for devil spawn
 		float devilChance = Random.Range(0.0f, 1.0f);
-		if (devilChance <= 0.05)
+		if (devilChance <= 0.05f)
 		{
 			characterComponent.SetupDevil();
 		}
