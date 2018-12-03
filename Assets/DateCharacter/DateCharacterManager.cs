@@ -31,7 +31,17 @@ public class DateCharacterManager : MonoBehaviour
 		GameObject newCharacter = Instantiate(this.genericCharacterObject, this.finalPosition + new Vector3(-15f, 0f, 0f), new Quaternion()) as GameObject;
 		DateCharacter characterComponent = newCharacter.GetComponent<DateCharacter>();
 
-		characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.VisionGuarded);
+		//Roll for devil spawn
+		float devilChance = Random.Range(0.0f, 1.0f);
+		if (devilChance <= 0.05)
+		{
+			characterComponent.SetupDevil();
+		}
+		else
+		{
+			characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.None);
+		}
+
 		GameManager.instance.UpdateGameState(GameState.Transitioning);
 	}
 

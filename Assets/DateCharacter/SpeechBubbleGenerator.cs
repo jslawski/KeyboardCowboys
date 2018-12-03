@@ -69,6 +69,7 @@ public class SpeechBubbleGenerator : MonoBehaviour {
 		{
 			this.currentFadeAmount = this.newFadeAmount;
 			this.currentJumbleAmount = this.newJumbleAmount;
+			TipManager.instance.DisplayTip();
 		}
 	}
 

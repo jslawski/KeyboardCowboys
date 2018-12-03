@@ -24,6 +24,8 @@ public class ScoreManager : MonoBehaviour {
 	public int secondsLeftInCurrentMinuteDate = 30;
 
 	[SerializeField]
+	public TextMeshProUGUI gameTimer;
+	[SerializeField]
 	private TextMeshProUGUI clockTimer;
 	[SerializeField]
 	public TextMeshProUGUI personCounter;
@@ -48,6 +50,8 @@ public class ScoreManager : MonoBehaviour {
 
 	public IEnumerator BeginGameCountdown()
 	{
+		this.SetGameTimerText();
+
 		while (this.minutesLeftInGame > 0 || this.secondsLeftInCurrentMinuteGame > 0)
 		{
 			yield return new WaitForSeconds(1);
@@ -59,6 +63,8 @@ public class ScoreManager : MonoBehaviour {
 			}
 
 			this.secondsLeftInCurrentMinuteGame--;
+
+			this.SetGameTimerText();
 		}
 
 		GameManager.instance.UpdateGameState(GameState.GameOver);
@@ -69,7 +75,7 @@ public class ScoreManager : MonoBehaviour {
 		this.minutesLeftInDate = this.minutesPerDate;
 		this.secondsLeftInCurrentMinuteDate = this.secondsPerDate;
 
-		this.SetTimerText();
+		this.SetDateTimerText();
 
 		while (this.minutesLeftInDate > 0 || this.secondsLeftInCurrentMinuteDate > 0)
 		{
@@ -83,7 +89,7 @@ public class ScoreManager : MonoBehaviour {
 
 			this.secondsLeftInCurrentMinuteDate--;
 
-			this.SetTimerText();
+			this.SetDateTimerText();
 		}
 
 		DateCharacterManager.instance.DismissCurrentCharacter(false);
@@ -91,7 +97,7 @@ public class ScoreManager : MonoBehaviour {
 		this.secondsLeftInCurrentMinuteDate = this.secondsPerDate;
 	}
 
-	void SetTimerText()
+	void SetDateTimerText()
 	{
 		string timerString = string.Empty;
 
@@ -110,5 +116,26 @@ public class ScoreManager : MonoBehaviour {
 		timerString += this.secondsLeftInCurrentMinuteDate;
 
 		this.clockTimer.text = timerString;
+	}
+
+	void SetGameTimerText()
+	{
+		string timerString = string.Empty;
+
+		if (this.minutesLeftInGame < 10)
+		{
+			timerString += "0";
+		}
+
+		timerString += this.minutesLeftInGame + ":";
+
+		if (this.secondsLeftInCurrentMinuteGame < 10)
+		{
+			timerString += "0";
+		}
+
+		timerString += this.secondsLeftInCurrentMinuteGame;
+
+		this.gameTimer.text = timerString;
 	}
 }

@@ -37,6 +37,12 @@ public class VisionManager : MonoBehaviour {
 	{
 		StopAllCoroutines();
 
+		if (state == GameState.Normal && this.currentRotationSpeed != this.newRotationSpeed)
+		{
+			TipManager.instance.DisplayTip();
+			this.currentRotationSpeed = this.newRotationSpeed;
+		}
+
 		if (state == GameState.Normal && this.parentObject.transform.childCount == 0)
 		{
 			this.evidenceImage.GetComponent<Image>().sprite = GameManager.instance.currentCharacter.evidenceImage;
@@ -65,7 +71,6 @@ public class VisionManager : MonoBehaviour {
 		{
 			this.parentObject.SetActive(false);
 			this.evidenceImage.SetActive(false);
-			this.currentRotationSpeed = this.newRotationSpeed;
 		}
 	}
 

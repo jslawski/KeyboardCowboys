@@ -247,4 +247,63 @@ public class DateCharacter : MonoBehaviour {
 				break;
 		}
 	}
+
+	public void SetupDevil()
+	{
+		this.baseBodySprite.sprite = Resources.Load<Sprite>("CharacterCreator/BaseBody/devilatyourtable.png");
+
+		this.benignTexts = new List<string>();
+		this.flirtWords = new List<string>();
+
+		this.isSerialKiller = true;
+
+		this.characterName = "Devil";
+
+		this.SetupCharacterTraits(DifficultyLevel.Easy, DateCharacterType.None);
+
+		//NOTE: This is poopy.  If you ever have an istance where numBenignTexts is > than the total number of unique texts, it'll deadlock
+		//		I guess it's fine for a game jam though. :P
+		string newBenignText = TextLiteralLists.instance.DevilBenignText[Random.Range(0, TextLiteralLists.instance.DevilBenignText.Count)];
+		while (this.benignTexts.Count < this.numBenignTexts)
+		{
+			if (!this.benignTexts.Contains(newBenignText))
+			{
+				this.benignTexts.Add(newBenignText);
+			}
+
+			newBenignText = TextLiteralLists.instance.DevilBenignText[Random.Range(0, TextLiteralLists.instance.DevilBenignText.Count)];
+		}
+
+		string newFlirtWord = TextLiteralLists.instance.FlirtWords[Random.Range(0, TextLiteralLists.instance.FlirtWords.Count)];
+		while (this.flirtWords.Count < this.numFlirtWords)
+		{
+			if (!this.flirtWords.Contains(newFlirtWord))
+			{
+				this.flirtWords.Add(newFlirtWord);
+			}
+
+			newFlirtWord = TextLiteralLists.instance.FlirtWords[Random.Range(0, TextLiteralLists.instance.FlirtWords.Count)];
+		}
+		this.correctFlirtWord = this.flirtWords[Random.Range(0, this.flirtWords.Count)];
+
+		string newBenignThought = TextLiteralLists.instance.DevilBadThoughts[Random.Range(0, TextLiteralLists.instance.DevilBadThoughts.Count)];
+		//numBenignTexts - 1 because we're slotting in 1 evidence thought
+		while (this.allThoughts.Count < this.numBenignTexts - 1)
+		{
+			if (!this.allThoughts.Contains(newBenignThought))
+			{
+				this.allThoughts.Add(newBenignThought);
+			}
+
+			newBenignThought = TextLiteralLists.instance.DevilBadThoughts[Random.Range(0, TextLiteralLists.instance.DevilBadThoughts.Count)];
+		}
+
+		this.evidenceImage = DateCharacterManager.instance.allBadEvidenceImages[Random.Range(0, DateCharacterManager.instance.allBadEvidenceImages.Length)];
+		this.evidenceThought = TextLiteralLists.instance.DevilBadThoughts[Random.Range(0, TextLiteralLists.instance.DevilBadThoughts.Count)];
+		this.evidenceConfession = TextLiteralLists.DEVIL_CONFESSION;
+
+		this.allThoughts.Add(this.evidenceThought);
+
+		GameManager.instance.currentCharacter = this;
+	}
 }

@@ -56,6 +56,7 @@ public class SeductionManager : MonoBehaviour {
 		{
 			this.currentFadeAmount = this.newFadeAmount;
 			this.currentJumbleAmount = this.newJumbleAmount;
+			TipManager.instance.DisplayTip();
 		}
 
 		if (state == GameState.Normal && this.flirtyTextParent.transform.childCount == 0)

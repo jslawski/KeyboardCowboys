@@ -101,16 +101,19 @@ public class SensesManager : MonoBehaviour {
 				if (this.hearingDegredationLevel == 0 && this.hearingValue <= this.hearingDowngrade1Threshold)
 				{
 					this.hearingDegredationLevel = 1;
+					TipManager.instance.tipText = TextLiteralLists.HEARING_DEGRADED_1_TIP;
 					SensesManager.onHearingDowngraded(this.hearingDowngrade1FadeAmount, this.hearingDowngrade1JumbleAmount);
 				}
 				else if (this.hearingDegredationLevel == 1 && this.hearingValue <= this.hearingDowngrade2Threshold)
 				{
 					this.hearingDegredationLevel = 2;
+					TipManager.instance.tipText = TextLiteralLists.HEARING_DEGRADED_2_TIP;
 					SensesManager.onHearingDowngraded(this.hearingDowngrade2FadeAmount, this.hearingDowngrade2JumbleAmount);
 				}
 				else if (this.hearingDegredationLevel == 2 && this.hearingValue <= 0)
 				{
 					this.hearingDegredationLevel = 3;
+					TipManager.instance.tipText = TextLiteralLists.HEARING_DEGRADED_3_TIP;
 					SensesManager.onHearingDowngraded(this.hearingDowngrade3FadeAmount, this.hearingDowngrade3JumbleAmount);
 				}
 				break;
@@ -119,16 +122,19 @@ public class SensesManager : MonoBehaviour {
 				if (this.speakingDegredationLevel == 0 && this.speakingValue <= this.speakingDowngrade1Threshold)
 				{
 					this.speakingDegredationLevel = 1;
+					TipManager.instance.tipText = TextLiteralLists.SPEAKING_DEGRADED_1_TIP;
 					SensesManager.onSpeakingDowngraded(this.speakingDowngrade1FadeAmount, this.speakingDowngrade1JumbleAmount);
 				}
 				else if (this.speakingDegredationLevel == 1 && this.speakingValue <= this.speakingDowngrade2Threshold)
 				{
 					this.speakingDegredationLevel = 2;
+					TipManager.instance.tipText = TextLiteralLists.SPEAKING_DEGRADED_2_TIP;
 					SensesManager.onSpeakingDowngraded(this.speakingDowngrade2FadeAmount, this.speakingDowngrade2JumbleAmount);
 				}
 				else if (this.speakingDegredationLevel == 2 && this.speakingValue <= 0)
 				{
 					this.speakingDegredationLevel = 3;
+					TipManager.instance.tipText = TextLiteralLists.SPEAKING_DEGRADED_3_TIP;
 					SensesManager.onSpeakingDowngraded(this.speakingDowngrade3FadeAmount, this.speakingDowngrade3JumbleAmount);
 				}
 				break;
@@ -136,16 +142,19 @@ public class SensesManager : MonoBehaviour {
 				if (this.visionDegredationLevel == 0 && this.visionValue <= this.visionDowngrade1Threshold)
 				{
 					this.visionDegredationLevel = 1;
+					TipManager.instance.tipText = TextLiteralLists.VISION_DEGRADED_1_TIP;
 					SensesManager.onVisionDowngraded(this.visionDowngrade1RotateSpeed);
 				}
 				else if (this.visionDegredationLevel == 1 && this.visionValue <= this.visionDowngrade2Threshold)
 				{
 					this.visionDegredationLevel = 2;
+					TipManager.instance.tipText = TextLiteralLists.VISION_DEGRADED_2_TIP;
 					SensesManager.onVisionDowngraded(this.visionDowngrade2RotateSpeed);
 				}
 				else if (this.visionDegredationLevel == 2 && this.visionValue <= 0)
 				{
 					this.visionDegredationLevel = 3;
+					TipManager.instance.tipText = TextLiteralLists.VISION_DEGRADED_3_TIP;
 					SensesManager.onVisionDowngraded(this.visionDowngrade3RotateSpeed);
 				}
 				break;
