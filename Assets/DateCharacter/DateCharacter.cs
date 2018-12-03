@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DateCharacter : MonoBehaviour {
 
@@ -56,13 +57,15 @@ public class DateCharacter : MonoBehaviour {
 
 	private IEnumerator MoveUpToTable()
 	{
-		while ((this.transform.position.x - Vector3.zero.x) > 0.01f)
+		Debug.LogError("ORIGINAL POSITION: " + this.transform.position);
+
+		while (Mathf.Abs(this.transform.position.x - DateCharacterManager.instance.finalPosition.x) > 0.001f)
 		{
-			this.transform.position = Vector3.Lerp(this.transform.position, Vector3.zero, 3f * Time.deltaTime);
+			this.transform.position = Vector3.Lerp(this.transform.position, DateCharacterManager.instance.finalPosition, 3f * Time.deltaTime);
 			yield return null;
 		}
 
-		this.transform.position = Vector3.zero;
+		this.transform.position = DateCharacterManager.instance.finalPosition;
 		SpeechBubbleGenerator.instance.StartTalking();
 		GameManager.instance.UpdateGameState(GameState.Normal);
 		StartCoroutine(ScoreManager.instance.BeginDateCountdown());
@@ -81,6 +84,8 @@ public class DateCharacter : MonoBehaviour {
 			ScoreManager.instance.SaidNoToSafePerson();
 		}
 
+		ScoreManager.instance.personCounter.text = ScoreManager.instance.runningTotalPeopleSeen.ToString();
+
 		StartCoroutine(this.DismissCharacterCoroutine(saidYes));
 	}
 
@@ -88,13 +93,14 @@ public class DateCharacter : MonoBehaviour {
 	{
 		SpeechBubbleGenerator.instance.StopTalking();
 
-		while (Mathf.Abs(-40f - this.transform.position.x) > 0.01f)
+		while (Mathf.Abs(3f - this.transform.position.x) > 1f)
 		{
-			this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(-40f, 0f, 0f), 3f * Time.deltaTime);
+			this.transform.position = Vector3.Lerp(this.transform.position, DateCharacterManager.instance.finalPosition + new Vector3(3f, 0f, 0f), 1f * Time.deltaTime);
 			yield return null;
 		}
 
 		GameManager.instance.UpdateGameState(GameState.Ready);
+		StopAllCoroutines();
 	}
 
     public void SetupNewCharacter(DifficultyLevel difficultyLevel, DateCharacterType characterType)

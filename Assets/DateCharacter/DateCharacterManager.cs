@@ -9,6 +9,8 @@ public class DateCharacterManager : MonoBehaviour
 {
     public static DateCharacterManager instance;
 
+	public Vector3 finalPosition = new Vector3(-0.083f, 1.56f, 3.972f);
+
     public Sprite[] allBenignEvidenceImages;
     public Sprite[] allBadEvidenceImages;
 
@@ -26,7 +28,7 @@ public class DateCharacterManager : MonoBehaviour
 
 	private void MakeNewCharacter()
 	{
-		GameObject newCharacter = Instantiate(this.genericCharacterObject, new Vector3(40f, 0f, 0f), new Quaternion()) as GameObject;
+		GameObject newCharacter = Instantiate(this.genericCharacterObject, this.finalPosition + new Vector3(-15f, 0f, 0f), new Quaternion()) as GameObject;
 		DateCharacter characterComponent = newCharacter.GetComponent<DateCharacter>();
 
 		characterComponent.SetupNewCharacter(DifficultyLevel.Easy, DateCharacterType.VisionGuarded);

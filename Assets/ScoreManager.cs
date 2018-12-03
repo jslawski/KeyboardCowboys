@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour {
 
@@ -22,11 +23,17 @@ public class ScoreManager : MonoBehaviour {
 	public int minutesLeftInDate = 0;
 	public int secondsLeftInCurrentMinuteDate = 30;
 
+	[SerializeField]
+	private TextMeshProUGUI clockTimer;
+	[SerializeField]
+	public TextMeshProUGUI personCounter;
+
 	// Use this for initialization
 	void Start ()
 	{
 		ScoreManager.instance = this;
 		StartCoroutine(this.BeginGameCountdown());
+
 	}
 
 	public void SaidYesToSafePerson()
@@ -59,6 +66,11 @@ public class ScoreManager : MonoBehaviour {
 
 	public IEnumerator BeginDateCountdown()
 	{
+		this.minutesLeftInDate = this.minutesPerDate;
+		this.secondsLeftInCurrentMinuteDate = this.secondsPerDate;
+
+		this.SetTimerText();
+
 		while (this.minutesLeftInDate > 0 || this.secondsLeftInCurrentMinuteDate > 0)
 		{
 			yield return new WaitForSeconds(1);
@@ -70,10 +82,33 @@ public class ScoreManager : MonoBehaviour {
 			}
 
 			this.secondsLeftInCurrentMinuteDate--;
+
+			this.SetTimerText();
 		}
 
 		DateCharacterManager.instance.DismissCurrentCharacter(false);
 		this.minutesLeftInDate = this.minutesPerDate;
 		this.secondsLeftInCurrentMinuteDate = this.secondsPerDate;
+	}
+
+	void SetTimerText()
+	{
+		string timerString = string.Empty;
+
+		if (this.minutesLeftInDate < 10)
+		{
+			timerString += "0";
+		}
+
+		timerString += this.minutesLeftInDate + ":";
+
+		if (this.secondsLeftInCurrentMinuteDate < 10)
+		{
+			timerString += "0";
+		}
+
+		timerString += this.secondsLeftInCurrentMinuteDate;
+
+		this.clockTimer.text = timerString;
 	}
 }
