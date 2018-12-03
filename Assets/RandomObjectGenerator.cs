@@ -22,11 +22,10 @@ public class RandomObjectGenerator : MonoBehaviour {
 
 	public GameObject parentObject;
 
-	private void Start()
+	private void Awake()
 	{
 		this.instantiatedObjects = new List<GameObject>();
 		this.alreadyInstantiatedPositions = new List<Vector3>();
-		//this.GenerateRandomObjects();
 	}
 
 	public void GenerateRandomObjects()

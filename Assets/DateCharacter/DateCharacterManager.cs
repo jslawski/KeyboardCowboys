@@ -9,16 +9,16 @@ public class DateCharacterManager : MonoBehaviour
 {
     public static DateCharacterManager instance;
 
-    public Texture[] allBenignEvidenceImages;
-    public Texture[] allBadEvidenceImages;
+    public Sprite[] allBenignEvidenceImages;
+    public Sprite[] allBadEvidenceImages;
 
 	public GameObject genericCharacterObject;
 
     public void Start()
     {
         DateCharacterManager.instance = this;
-        this.allBenignEvidenceImages = Resources.LoadAll<Texture>("EvidenceImage/Benign");
-        this.allBadEvidenceImages = Resources.LoadAll<Texture>("EvidenceImage/Bad");
+        this.allBenignEvidenceImages = Resources.LoadAll<Sprite>("EvidenceImage/Benign");
+        this.allBadEvidenceImages = Resources.LoadAll<Sprite>("EvidenceImage/Bad");
 		GameManager.onGameStateUpdate += this.StateUpdated;
 
 		this.MakeNewCharacter();

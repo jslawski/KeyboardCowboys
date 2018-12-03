@@ -21,6 +21,12 @@ public class SeductionManager : MonoBehaviour {
 
 	public GameObject confessionBubble;
 
+	private float currentFadeAmount = 0f;
+	private float currentJumbleAmount = 0f;
+
+	private float newFadeAmount = 0f;
+	private float newJumbleAmount = 0f;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -34,10 +40,24 @@ public class SeductionManager : MonoBehaviour {
 		
 		SeductionManager instance = this;
 		GameManager.onGameStateUpdate += this.StateUpdated;
+		SensesManager.onSpeakingDowngraded += this.SpeakingDowngraded;
+	}
+
+	private void SpeakingDowngraded(float fadeAmount, float jumbleAmount)
+	{
+		this.newFadeAmount = fadeAmount;
+		this.newJumbleAmount = jumbleAmount;
 	}
 
 	private void StateUpdated(GameState state)
 	{
+		//Downgrade when returning to normal state if needed
+		if (state == GameState.Normal && this.currentJumbleAmount != this.newJumbleAmount)
+		{
+			this.currentFadeAmount = this.newFadeAmount;
+			this.currentJumbleAmount = this.newJumbleAmount;
+		}
+
 		if (state == GameState.Normal && this.flirtyTextParent.transform.childCount == 0)
 		{
 			this.generator.numberOfObjectsToGenerate = GameManager.instance.currentCharacter.numFlirtWords;
@@ -56,6 +76,7 @@ public class SeductionManager : MonoBehaviour {
 				return;
 			}
 			this.flirtyTextParent.SetActive(true);
+			this.SetTexts();
 		}
 		else if (state == GameState.Transitioning)
 		{
@@ -86,7 +107,19 @@ public class SeductionManager : MonoBehaviour {
 	{
 		for (int i = 0; i < GameManager.instance.currentCharacter.numFlirtWords; i++)
 		{
-			this.generator.instantiatedObjects[i].GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentCharacter.flirtWords[i].ToUpper();
+			this.generator.instantiatedObjects[i].GetComponent<TextMeshProUGUI>().text = GameManager.instance.currentCharacter.flirtWords[i];
+
+			TextMeshProUGUI[] allUguis = this.generator.instantiatedObjects[i].GetComponentsInChildren<TextMeshProUGUI>();
+			foreach (TextMeshProUGUI current in allUguis)
+			{
+				current.materialForRendering.SetFloat("_FaceDilate", this.currentFadeAmount);
+			}
+
+			TMP_Text[] allTexts = this.generator.instantiatedObjects[i].GetComponentsInChildren<TMP_Text>();
+			foreach (TMP_Text current in allTexts)
+			{
+				current.characterSpacing = this.currentJumbleAmount;
+			}
 		}
 	}
 
@@ -128,11 +161,8 @@ public class SeductionManager : MonoBehaviour {
 				continue;
 			}
 
-			Debug.LogError("Key Pressed: " + charKey + " Word: " + GameManager.instance.currentCharacter.flirtWords[i] + " Character at index " + this.currentCorrectCharacterIndex + ": " + GameManager.instance.currentCharacter.flirtWords[i][this.currentCorrectCharacterIndex]);
-
 			if (GameManager.instance.currentCharacter.flirtWords[i].ToUpper()[this.currentCorrectCharacterIndex] == charKey)
 			{
-				Debug.LogError("CORRECT! " + key);
 				correctKeyPressed = true;
 				this.generator.instantiatedObjects[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text += charKey;
 

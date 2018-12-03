@@ -23,7 +23,11 @@ public class ToggleTool : MonoBehaviour {
 			return;
 		}
 
-		if (GameManager.instance.state != stateToChangeTo)
+		if (GameManager.instance.state == GameState.Displaying && this.stateToChangeTo == GameState.Vision)
+		{
+			GameManager.instance.UpdateGameState(GameState.Normal);
+		}
+		else if (GameManager.instance.state != stateToChangeTo)
 		{
 			GameManager.instance.UpdateGameState(stateToChangeTo);
 		}
@@ -42,6 +46,11 @@ public class ToggleTool : MonoBehaviour {
 		else if (state != this.stateToChangeTo)
 		{
 			this.gameObject.SetActive(false);
+		}
+
+		if (state == GameState.Displaying && this.stateToChangeTo == GameState.Vision)
+		{
+			this.gameObject.SetActive(true);
 		}
 	}
 }

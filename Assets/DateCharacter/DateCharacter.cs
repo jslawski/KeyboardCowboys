@@ -9,7 +9,7 @@ public class DateCharacter : MonoBehaviour {
     public bool isSerialKiller;
 
     //Hidden Secrets
-    public Texture evidenceImage;
+    public Sprite evidenceImage;
     public string evidenceThought;
     public string evidenceConfession;
 

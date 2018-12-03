@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fdf6894585e25b941b2e544fc5c6feaf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Allan
+  fontNames:
+  - Allan
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bae0bca5f9d2f5a46b94431367a555da, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
